@@ -4,6 +4,7 @@
 
 include 'db.php';
 
+
 $sql = "SELECT * FROM tasks";
 
 $rows = $db->query($sql);
@@ -41,12 +42,12 @@ $rows = $db->query($sql);
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="">
+                            <form method="post" action="add.php">
                                 <div class="form-group">
                                     <label for="">Task Name</label>
-                                    <input type="text" required name="task" class="form-control">
+                                    <input type="text" name="task" class="form-control" required>
                                 </div>
-                                <input type="submit" name="send" value="send" class="btn btn-success">
+                                <input type="submit" name='send' value="Add Task" class="btn btn-success">
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -71,15 +72,16 @@ $rows = $db->query($sql);
                     <tbody>
                     <?php $x=<<<tab
                         <td><a href="" class="btn btn-success">Edit</a></td>
-                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                        <td><a href="delete.php" class="btn btn-danger">Delete</a></td>
 tab;
 
                     ?>
-
                         <?php
 
                         while ($row = $rows->fetch_assoc()){
-                        echo"<tr><td>{$row['id']}</td><br><td>{$row['name']}</td> $x";
+                        echo"<tr><td>{$row['id']}</td><br><td>{$row['name']}</td>
+                        <td><a href='' class='btn btn-success'>Edit</a></td>
+                        <td><a href='delete.php?id={$row['id']}' class='btn btn-danger'>Delete</a></td>";
 
                         };?>
 
@@ -90,5 +92,6 @@ tab;
         </div>
     </div>
 </div>
+
 </body>
 </html>

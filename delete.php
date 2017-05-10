@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: slavas
- * Date: 5/10/2017
- * Time: 12:40 PM
- */
+include 'db.php';
+$id = $_GET['id'];
+
+$sql = "delete from tasks where id = '$id'";
+
+if ($db->query($sql)){
+    header('location:index.php');
+};
+
+?>
