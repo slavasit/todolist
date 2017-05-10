@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: slavas
- * Date: 5/10/2017
- * Time: 12:40 PM
- */
+//connect to Database
+$db = new Mysqli;
+$db-> connect('localhost', 'root', '' , 'crud');
+
+//Check database connection
+if ($db){
+    echo "success";
+}
+
+?>
